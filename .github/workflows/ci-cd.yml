@@ -13,6 +13,13 @@ jobs:
       # ✅ ÉTAPE 1 : Récupérer le code du dépôt
       - name: Checkout code
         uses: actions/checkout@v4
+ 
+      # ✅ ÉTAPE 3 : Compiler le backend avec Maven
+      - name: Build backend with Maven
+        run: |
+          cd springboot/app
+          mvn clean package -DskipTests
+          echo "✅ Backend compiled successfully"
 
 
       # ✅ ÉTAPE 3 : Se connecter à Docker Hub
