@@ -59,18 +59,18 @@ jobs:
       - name: Test application with Docker Compose
         run: |
           echo "Starting application..."
-          docker-compose up -d
+          docker compose up -d
           echo "Waiting for services to be ready..."
           sleep 10
           echo "Services started. Checking status..."
-          docker-compose ps
-          docker-compose logs || true
+          docker compose ps
+          docker compose logs || true
 
       # ✅ ÉTAPE 10 : Arrêter docker-compose après les tests
       - name: Cleanup Docker Compose
         if: always()  # Exécuter même en cas d'erreur
         run: |
-          docker-compose down || true
+          docker compose down || true
 
       # ✅ ÉTAPE 11 : Afficher un résumé de succès
       - name: Build Success Summary
